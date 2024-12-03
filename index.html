@@ -6,60 +6,231 @@
     <title>Online Bookstore</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <img src="images/logo3.png" alt="Logo Image">
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html"  class="active">HOME</a></li>
-                    <li><a href="about-us.html" >ABOUT US</a></li>
-                    <li><a href="catalog.html">SHOP</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header> 
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <h2>Welcome to our Online Bookstore</h2>
-        <p>Explore a wide range of books across various genres.</p>
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-content">
-          <div class="footer-section about">
-            <h3>About Us</h3>
-            <p>We provide exceptional web solutions to make your projects stand out. Stay connected for more!</p>
-          </div>
-          <div class="footer-section links">
-            <h3>Quick Links</h3>
+  <header class="header">
+    <div class="container">
+        <img src="images/logo.png" alt="Logo Image">
+        <nav class="nav">
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#blog">Blog</a></li>
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a href="about-us.html">ABOUT US</a></li>
+                <li><a href="books.html">BOOKS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="#" class="login-btn" onclick="openLogin()">LOGIN</a></li>
+                <li><a href="#" class="signup-btn" onclick="openSignup()">SIGN UP</a></li>
             </ul>
-          </div>
-          <div class="footer-section social">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
+        </nav>
+    </div>
+  </header>
+
+  <!-- Background Section -->
+  <div class="background"></div>
+  <div class="overlay">
+    <header class="homepage-header">
+      <h1>📖 Welcome to Book Heaven</h1>
+      <p>Your next great read awaits!</p>
+      <a href="#shop" class="cta-button">Shop Now</a>
+    </header>
+  </div>
+
+  <!-- Login Form Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLogin()">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" placeholder="Enter your email" required>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+        <button type="submit" class="form-button">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign Up Form Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSignup()">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+        <label for="signup-name">Name:</label>
+        <input type="text" id="signup-name" placeholder="Enter your name" required>
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" placeholder="Enter your email" required>
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" placeholder="Create a password" required>
+        <button type="submit" class="form-button">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>In a world full of technology, get your e-book in a fast way. We are your solution.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">About Us</a></li>
+          <li><a href="#contact">Books</a></li>
+          <li><a href="#blog">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 YourWebsite | All Rights Reserved</p>
-        </div>
-      </footer>
-      
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Bibliotech | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <style>
+    /* General Reset */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Background Image Section */
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('images/background_image.jpg') no-repeat center center fixed;
+        background-size: cover;
+        filter: blur(8px);
+        z-index: -1;
+    }
+
+    .overlay {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+    .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #ce1dd1;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #49094a;
+}
+
+    .modal-content {
+        background: white;
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+    .modal-content h2 {
+        margin-bottom: 20px;
+    }
+
+    .modal-content label {
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .modal-content input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ce1dd1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .form-button:hover {
+        background-color: #49094a;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #555;
+    }
+
+    .close:hover {
+        color: black;
+    }
+  </style>
+
+  <script>
+    function openLogin() {
+        document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    function closeLogin() {
+        document.getElementById('loginModal').style.display = 'none';
+    }
+
+    function openSignup() {
+        document.getElementById('signupModal').style.display = 'flex';
+    }
+
+    function closeSignup() {
+        document.getElementById('signupModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
