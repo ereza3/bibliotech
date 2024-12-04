@@ -18,7 +18,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    display: flex;
     align-items: center;
     justify-content: space-between;
 }
@@ -191,7 +190,6 @@ body {
     background-size: cover;
     font-family: Arial, sans-serif;
     color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
