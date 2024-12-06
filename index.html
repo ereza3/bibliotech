@@ -31,13 +31,13 @@
     <header class="homepage-header">
       <h1>📖 Welcome to Book Heaven</h1>
       <p>Your next great read awaits!</p>
-      <a href="#shop" class="cta-button">Shop Now</a>
+      <a href="#" class="cta-button" onclick="redirectToBooks()">Shop Now</a>
     </header>
   </div>
 
   <div id="loginModal" class="modal">
     <div class="modal-content">
-      <h1 class="modal-title">Login </h1>
+      <h1 class="modal-title">Login</h1>
       <form>
         <label for="login-email">Email:</label>
         <input type="email" id="login-email-input" placeholder="Enter your email" required>
@@ -124,13 +124,10 @@
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.6);
     }
-     .modal-title
-     {
+
+    .modal-title {
       color: #49094a;
-      
-
-     }
-
+    }
 
     .modal {
       display: none;
@@ -201,19 +198,6 @@
 
     .form-button:hover {
       background-color: #49094a;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #555;
-    }
-
-    .close:hover {
-      color: black;
     }
   </style>
 
@@ -294,8 +278,13 @@
     }
 
     function validateEmail(email) {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailPattern.test(email);
+    }
+
+    function redirectToBooks() {
+      // Redirect to the books page
+      window.location.href = 'books.html';
     }
   </script>
 </body>

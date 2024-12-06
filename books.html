@@ -6,107 +6,117 @@
     <title>Online Bookstore</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-container {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            gap: 20px; 
+            margin: 40px auto; 
+            max-width: 1200px; 
+        }
 
+        .content-left {
+            flex: 1; 
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .content-right {
+            flex-basis: 20%; 
+            padding: 20px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .content-right h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .content-right ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-right ul li {
+            margin-bottom: 10px;
+        }
+
+        .content-right ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .content-right ul li a:hover {
+            color: #54146e;
+        }
+
+        .content-left h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 20px;
+        }
+
+        .book {
+            position: relative;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .book:hover {
+            transform: scale(1.05);
+        }
+
+        .book img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: filter 0.3s ease;
+        }
+
+        .book img.clicked {
+            filter: brightness(70%);
+        }
+
+        .book p {
+            font-size: 1rem;
+            color: #54146e;
+            font-weight: 600;
+            transition: font-size 0.3s ease;
+        }
+
+        .book p.title.clicked {
+            font-size: 1.2rem; /* Increase title size */
+            font-weight: bold;
+        }
+    </style>
 </head>
-<style>
-  
-.content-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    gap: 20px; 
-    margin: 40px auto; 
-    max-width: 1200px; 
-}
-
-
-.content-left {
-    flex: 1; 
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-
-.content-right {
-    flex-basis: 20%; 
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-
-.content-right h3 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.content-right ul {
-    list-style: none;
-    padding: 0;
-}
-
-.content-right ul li {
-    margin-bottom: 10px;
-}
-
-.content-right ul li a {
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.content-right ul li a:hover {
-    color: #54146e;
-}
-
-
-.content-left h2 {
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
-    margin-top: 20px;
-}
-
-.book {
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.book img {
-    width: 200px;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.book p {
-    font-size: 1rem;
-    color: #54146e;
-    font-weight: 600;
-}
-
-</style>
 <body>
   <header class="header">
     <div class="container">
         <img src="images/logo.png" alt="Logo Image">
         <nav class="nav">
             <ul>
-                <li><a href="index.html" >HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="about-us.html">ABOUT US</a></li>
                 <li><a href="books.html" class="active">BOOKS</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
@@ -115,39 +125,33 @@
     </div>
 </header>
 
-
 <main class="main-content">
     <div class="content-container">
-        
         <div class="content-left">
             <h2>Biography</h2>
             <div class="book-grid">
                 <div class="book">
                     <img src="images/cleopatra.jpg" alt="Book 1">
-                    <p>Cleopatra: A Life</p>
-                    <p>Cleopatra: A Life is a biography of Cleopatra, the last queen of Egypt, who ruled from 51 to 30 BC. The book aims to separate fact from fiction and shed light on the woman behind the myths and legends that have surrounded her for centuries.</p>
+                    <p class="title">Cleopatra: A Life</p>
+                    <p><i>A Life is a biography of Cleopatra, the last queen of Egypt, who ruled from 51 to 30 BC. The book aims to separate fact from fiction and shed light on the woman behind the myths and legends that have surrounded her for centuries.</i></p>
                 </div>
                 <div class="book">
                     <img src="images/mind.jpg" alt="Book 2">
-                    <p>Into The Wild</p>
-                    <p>Into the Wild is a 1996 non-fiction book written by Jon Krakauer. Into the Wild is an international bestseller which has been printed in 30 languages and 173 editions and formats.</p>
+                    <p class="title">Into The Wild</p>
+                    <p><i> The Wild is a 1996 non-fiction book written by Jon Krakauer. Into the Wild is an international bestseller which has been printed in 30 languages and 173 editions and formats.</i></p>
                 </div>
                 <div class="book">
                     <img src="images/sylvia.jpg" alt="Book 3">
-                    <p>My Beautiful Mind</p>
-                    <p>A Beautiful Mind is a 1998 unauthorized biography of Nobel Prize-winning economist and mathematician John Nash by Sylvia Nasar, professor of journalism at Columbia University.</p>
+                    <p class="title">My Beautiful Mind</p>
+                    <p><i>A Beautiful Mind is a 1998 unauthorized biography of Nobel Prize-winning economist and mathematician John Nash by Sylvia Nasar, professor of journalism at Columbia University.</i></p>
                 </div>
                 <div class="book">
                     <img src="images/mao.jpg" alt="Book 4">
-                    <p>Mao: The Unknown Story</p>
-                    <p>Mao: The Unknown Story is a 2005 biography of the Chinese communist leader Mao Zedong (1893-1976) that was written by the husband-and-wife team of the writer Jung Chang and the historian Jon Halliday, who detail Mao's early life, his introduction to the Chinese Communist Party, and his political career.</p>
+                    <p class="title">Mao: The Unknown Story</p>
+                    <p><i>Mao: The Unknown Story is a 2005 biography of the Chinese communist leader Mao Zedong (1893-1976) that was written by the husband-and-wife team of the writer Jung Chang and the historian Jon Halliday, who detail Mao's early life, his introduction to the Chinese Communist Party, and his political career.</i></p>
                 </div>
             </div>
         </div>
-       
-        
-        
-   
         <aside class="content-right">
             <h3>Categories</h3>
             <ul>
@@ -159,37 +163,49 @@
     </div>
 </main>
 
-  <footer class="footer">
-        <div class="footer-content">
-          <div class="footer-section about">
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section about">
             <h3>About Us</h3>
-            <p>In a world full of technology get your e-book in a fast way. We are your solution</p>
-          </div>
-          <div class="footer-section links">
+            <p>In a world full of technology, get your e-book in a fast way. We are your solution.</p>
+        </div>
+        <div class="footer-section links">
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#services">About Us</a></li>
-              <li><a href="#contact">Books</a></li>
-              <li><a href="#blog">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">About Us</a></li>
+                <li><a href="#contact">Books</a></li>
+                <li><a href="#blog">Contact</a></li>
             </ul>
-          </div>
-          <div class="footer-section social">
+        </div>
+        <div class="footer-section social">
             <h3>Follow Us</h3>
             <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-    
-              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
             </div>
-          </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 Bibliotech | All Rights Reserved</p>
-        </div>
-      </footer>
-      
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Bibliotech | All Rights Reserved</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const books = document.querySelectorAll(".book");
+
+        books.forEach((book) => {
+            book.addEventListener("click", () => {
+                const img = book.querySelector("img");
+                const title = book.querySelector("p:first-of-type");
+
+                // Toggle the clicked class for dark overlay and larger title
+                img.classList.toggle("clicked");
+                title.classList.toggle("clicked");
+            });
+        });
+    });
+</script>
 </body>
-
 </html>
-
