@@ -35,31 +35,24 @@
     </header>
   </div>
 
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <h1 class="modal-title">Login</h1>
-      <form>
-        <label for="login-email">Email:</label>
-        <input type="email" id="login-email-input" placeholder="Enter your email" required>
-        <label for="login-password">Password:</label>
-        <input type="password" id="login-password-input" placeholder="Enter your password" required>
-        <button type="submit" onclick="closeLogin()" class="form-button">Login</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <h1 class="modal-title">Sign Up</h1>
-      <form>
-        <label for="signup-name">Name:</label>
-        <input type="text" id="signup-name-input" placeholder="Enter your name" required>
-        <label for="signup-email">Email:</label>
-        <input type="email" id="signup-email-input" placeholder="Enter your email" required>
-        <label for="signup-password">Password:</label>
-        <input type="password" id="signup-password-input" placeholder="Create a password" required>
-        <button type="submit" onclick="closeSignup()" class="form-button">Sign Up</button>
-      </form>
+  <div class="books-section">
+    <h2>Best Sellers!</h2>
+    <div class="books-container">
+      <div class="book-card">
+        <img src="images/creative.jpg" alt="Book 1">
+        <h3>The Creative Act</h3>
+        <p><i>"The Creative Act: A Way of Being" is a book by Rick Rubin, the legendary music producer known for his influence in the creative arts.</i></p>
+      </div>
+      <div class="book-card">
+        <img src="images/rule.jpg" alt="Book 2">
+        <h3>The Rules Handbook</h3>
+        <p><i>"The Rules Handbook" is a dating guide that emphasizes the importance of maintaining mystery and desirability in relationships.</i></p>
+      </div>
+      <div class="book-card">
+        <img src="images/boy.jpg" alt="Book 3">
+        <h3>Pageboy</h3>
+        <p><i>"Pageboy" is a coming-of-age memoir by Elliot Page, featuring a series of non-linear vignettes that explore his life starting at age 20.</i></p>
+      </div>
     </div>
   </div>
 
@@ -125,23 +118,6 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
-    .modal-title {
-      color: #49094a;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
-
     .cta-button {
       display: inline-block;
       padding: 10px 20px;
@@ -158,132 +134,65 @@
       background-color: #49094a;
     }
 
-    .modal-content {
-      background: white;
-      padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    .books-section {
       text-align: center;
+      padding: 50px 20px;
+      background-color: #f9f9f9;
     }
 
-    .modal-content h2 {
+    .books-section h2 {
+      font-size: 2rem;
       margin-bottom: 20px;
+      color: #49094a;
     }
 
-    .modal-content label {
-      display: block;
-      margin-bottom: 5px;
+    .books-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .book-card {
+      background-color: #fff;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
       text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .modal-content input {
+    .book-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .book-card img {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      height: auto;
+      transition: transform 0.3s;
     }
 
-    .form-button {
-      width: 100%;
-      padding: 10px;
-      background-color: #ce1dd1;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+    .book-card:hover img {
+      transform: scale(1.05);
     }
 
-    .form-button:hover {
-      background-color: #49094a;
+    .book-card h3 {
+      margin: 15px 10px 5px;
+      color: #49094a;
+    }
+
+    .book-card p {
+      margin: 0 10px 15px;
+      font-size: 0.9rem;
+      color: #333;
     }
   </style>
 
   <script>
-    function openLogin() {
-      console.log("Opening login modal");
-      const loginModal = document.getElementById('loginModal');
-      if (loginModal) {
-        loginModal.style.display = 'flex';
-      } else {
-        console.error("Login modal not found");
-      }
-    }
-
-    function openSignup() {
-      console.log("Opening signup modal");
-      const signupModal = document.getElementById('signupModal');
-      if (signupModal) {
-        signupModal.style.display = 'flex';
-      } else {
-        console.error("Signup modal not found");
-      }
-    }
-
-    function closeLogin() {
-      const email = document.getElementById('login-email-input').value.trim();
-      const password = document.getElementById('login-password-input').value.trim();
-
-      if (!email) {
-        alert('Email is required!');
-        return;
-      }
-      if (!validateEmail(email)) {
-        alert('Please enter a valid email address!');
-        return;
-      }
-      if (!password) {
-        alert('Password is required!');
-        return;
-      }
-
-      const loginModal = document.getElementById('loginModal');
-      if (loginModal) {
-        loginModal.style.display = 'none';
-      } else {
-        console.error('Login modal not found.');
-      }
-    }
-
-    function closeSignup() {
-      const name = document.getElementById('signup-name-input').value.trim();
-      const email = document.getElementById('signup-email-input').value.trim();
-      const password = document.getElementById('signup-password-input').value.trim();
-
-      if (!name) {
-        alert('Name is required!');
-        return;
-      }
-      if (!email) {
-        alert('Email is required!');
-        return;
-      }
-      if (!validateEmail(email)) {
-        alert('Please enter a valid email address!');
-        return;
-      }
-      if (!password) {
-        alert('Password is required!');
-        return;
-      }
-
-      const signupModal = document.getElementById('signupModal');
-      if (signupModal) {
-        signupModal.style.display = 'none';
-      } else {
-        console.error('Signup modal not found.');
-      }
-    }
-
-    function validateEmail(email) {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailPattern.test(email);
-    }
-
     function redirectToBooks() {
-      // Redirect to the books page
       window.location.href = 'books.html';
     }
   </script>

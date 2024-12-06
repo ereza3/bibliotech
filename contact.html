@@ -35,7 +35,7 @@
     
         <section class="contact-form">
           <h2>Get in Touch</h2>
-          <form action="#" method="post">
+          <form id="contactForm" action="#" method="post">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
     
@@ -47,11 +47,22 @@
     
             <button type="submit">Send Message</button>
           </form>
+          <p id="confirmation" style="color: green; display: none; margin-top: 15px;">Message sent!</p>
         </section>
       </main>
 
+      <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault(); 
+          const confirmation = document.getElementById('confirmation');
+          confirmation.style.display = 'block'; 
+          setTimeout(() => {
+            confirmation.style.display = 'none'; 
+          }, 3000);
+        });
+      </script>
+
       <style>
-       
 .contact-container {
   display: flex;
   justify-content: space-around;
@@ -118,13 +129,9 @@
 .contact-form button:hover {
   background-color: #543719;
 }
-
       </style>
-    
 
-
-
-  <!-- Footer Section -->
+  
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section about">
@@ -144,9 +151,7 @@
         <h3>Follow Us</h3>
         <div class="social-links">
           <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-
           <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-        
         </div>
       </div>
     </div>

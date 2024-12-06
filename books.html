@@ -105,7 +105,7 @@
         }
 
         .book p.title.clicked {
-            font-size: 1.2rem; /* Increase title size */
+            font-size: 1.2rem; 
             font-weight: bold;
         }
     </style>
@@ -199,8 +199,6 @@
             book.addEventListener("click", () => {
                 const img = book.querySelector("img");
                 const title = book.querySelector("p:first-of-type");
-
-                // Toggle the clicked class for dark overlay and larger title
                 img.classList.toggle("clicked");
                 title.classList.toggle("clicked");
             });
